@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "../styles/Forum.css";
-import CreatePostModal from "../../components/CreatePostModal";
-import ForumHeader from "../../components/ForumHeader";
-import ForumList from "../../components/ForumList";
-import ForumSidebar from "../../components/ForumSidebar";
+import CreatePostModal from "../components/CreatePostModal";
+import ForumHeader from "../components/ForumHeader";
+import ForumList from "../components/ForumList";
+import ForumSidebar from "../components/ForumSidebar";
 
 type Discussion = {
   id: number;
