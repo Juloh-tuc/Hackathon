@@ -15,7 +15,6 @@
 
 /* Not Found Container */
 .not-found-container {
- 
   backdrop-filter: blur(5px);
   border-radius: 15px;
   padding: 2rem;

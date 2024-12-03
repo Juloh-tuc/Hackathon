@@ -1,20 +1,22 @@
-.body-home{
-  background-image: url(../../assets/images/bckHome.jpeg); 
+/* Styles pour le corps et la page d'accueil */
+.body-home {
+  background-image: url(../../assets/images/bckHome.jpeg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 6em;
 }
+
 .home {
-  margin-top: 60px;
+  margin-top: 80px;
   padding: 20px;
-  border-radius: 10px; /* Coins arrondis */
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre le contenu horizontalement */
+  align-items: center;
   justify-content: center;
   text-align: center;
-   
+  position: relative;
 }
 
 .home h1 {
@@ -25,24 +27,6 @@
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
-}
-
-.aboutuscontainer {
-  
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  margin: 20px 0; /* Ajoute de l'espace autour du container */
-  max-width: 800px; /* Limite la largeur du container */
-  width: 100%; /* Assure que le container occupe toute la largeur disponible jusqu'à la limite */
-}
-
-.aboutustitle {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #ff6f61;
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
 .home p {
@@ -57,25 +41,92 @@
   margin-right: auto;
 }
 
-/* Responsivité */
+.aboutuscontainer {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  max-width: 800px;
+  width: 100%;
+}
+
+.aboutustitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ff6f61;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Styles pour le défilement des citations */
+.quote-marquee {
+  width: 50%;
+  overflow: hidden;
+  position: fixed;
+  top: calc(60px + 2em);
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2rem;
+  z-index: 100000;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 15s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-item {
+  margin-right: 50px;
+  font-size: 1.2rem;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Réactivité */
+
+/* Tablettes et grands écrans */
+@media (max-width: 1024px) {
+  .quote-marquee {
+    width: 70%;
+  }
+
+  .marquee-item {
+    margin-right: 30px;
+  }
+}
+
+/* Écrans moyens (moins de 768px) */
 @media (max-width: 768px) {
-  .home {
-    padding: 15px;
+  .quote-marquee {
+    width: 90%;
+    top: calc(50px + 2em);
   }
 
-  .home h1 {
-    font-size: 2rem;
-  }
-
-  .aboutuscontainer {
-    padding: 15px;
-  }
-
-  .aboutustitle {
-    font-size: 1.6rem;
-  }
-
-  .home p {
+  .marquee-item {
     font-size: 1rem;
+    margin-right: 20px;
+  }
+}
+
+/* Très petits écrans (moins de 480px) */
+@media (max-width: 480px) {
+  .quote-marquee {
+    width: 35%;
+    top: calc(40px + 2em);
+  }
+
+  .marquee-item {
+    font-size: 0.9rem;
+    margin-right: 10px;
   }
 }

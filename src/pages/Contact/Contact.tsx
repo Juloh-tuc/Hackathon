@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Contact.css";
 
-
 const Contact = () => {
   return (
     <div className="contact-page">
@@ -14,7 +13,12 @@ const Contact = () => {
         <form className="contact-form">
           <div className="form-group">
             <label htmlFor="name">Nom</label>
-            <input type="text" id="name" placeholder="Ton nom ou pseudo" required />
+            <input
+              type="text"
+              id="name"
+              placeholder="Ton nom ou pseudo"
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -34,7 +38,7 @@ const Contact = () => {
           </button>
         </form>
         <Link to="/" className="back-link">
-           Home
+          Home
         </Link>
       </div>
     </div>

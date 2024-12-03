@@ -6,7 +6,7 @@
   object-fit: cover;
   min-height: 100vh;
   padding: 2rem;
-  background: url("../../assets/images/bgcontact.jpg") center/cover no-repeat;
+  background: url("../../assets/images/bgcontact.jpg") center / cover no-repeat;
   margin-top: -1em;
 }
 

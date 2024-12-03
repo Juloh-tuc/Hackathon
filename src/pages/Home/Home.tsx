@@ -1,9 +1,57 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./Home.css";
 
+interface Quote {
+  q: string;
+  a: string;
+}
+
 function Home() {
+  const [quotes, setQuotes] = useState<Quote[]>([]); // État pour stocker les citations
+  const [error, setError] = useState<string | null>(null); // État pour gérer les erreurs
+
+  // Utilisation de useEffect pour fetcher les données au chargement du composant
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      try {
+        const response = await axios.get("https://zenquotes.io/api/quotes");
+        const quotesData = response.data.map(
+          (quote: { q: string; a: string }) => ({
+            q: quote.q,
+            a: quote.a,
+          }),
+        );
+        setQuotes(quotesData); // Stocke les citations dans l'état
+      } catch (err) {
+        setError("Impossible de récupérer les citations.");
+        console.error(err); // Affiche l'erreur dans la console si le fetch échoue
+      }
+    };
+
+    fetchQuotes(); // Appel de la fonction pour récupérer les citations
+  }, []); // Le tableau vide assure que l'effet ne se déclenche qu'une fois au montage du composant
+
   return (
     <div className="home">
-      <h1>Une lettre Ouverte</h1>
+      {/* Section de défilement des citations */}
+      <div className="quote-marquee">
+        {quotes.length > 0 ? (
+          <div className="marquee">
+            {quotes.map((quote, index) => (
+              <span key={`${index}-${quote.q}`} className="marquee-item">
+                "{quote.q}" - {quote.a}
+              </span>
+            ))}
+          </div>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <p>Chargement des citations...</p>
+        )}
+      </div>
+
+      <h1>Une Lettre Ouverte</h1>
 
       <div className="aboutuscontainer">
         <h2 className="aboutustitle">Vous avez besoin de parler ?</h2>
