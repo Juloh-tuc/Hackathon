@@ -7,24 +7,25 @@ const Contact = () => {
       <div className="contact-container">
         <h1 className="contact-title">Nous contacter</h1>
         <p className="contact-description">
-          Si vous avez besoin d’aide ou souhaitez nous poser des questions,
-          n’hésitez pas à nous écrire. Nous sommes là pour vous aider.
+          Si tu as besoin d’aide ou souhaites nous poser des questions,
+          n’hésites pas à nous écrire. Nous sommes là pour t'aider.
         </p>
         <form className="contact-form">
           <div className="form-group">
             <label htmlFor="name">Nom</label>
-            <input type="text" id="name" placeholder="Votre nom" />
+            <input type="text" id="name" placeholder="Ton nom ou pseudo" required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="Votre email" />
+            <input type="email" id="email" placeholder="Ton email" required />
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Raconte nous tout</label>
             <textarea
               id="message"
-              placeholder="Votre message"
+              placeholder="Ton message"
               rows={4}
+              required
             ></textarea>
           </div>
           <button type="submit" className="form-button">
@@ -32,7 +33,7 @@ const Contact = () => {
           </button>
         </form>
         <Link to="/" className="back-link">
-          Retour à l'accueil
+           Home
         </Link>
       </div>
     </div>
