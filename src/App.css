@@ -9,10 +9,10 @@
 
 /* Root Variables */
 :root {
-  --primary-color: #f52121;
-  --secondary-color: #0b5cf3;
-  --dark: #001500;
-  --light: #f8fdf0;
+  --primary-color: #F6D6D6;
+  --secondary-color: #7BD3EA;
+  --dark: #A1EEBD;
+  --light: #F6F7C4;
 }
 
 .pages {
