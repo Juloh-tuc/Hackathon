@@ -39,7 +39,7 @@ function NavBar() {
             </Link>
           </li>
           <li>
-            <Link to="/contact/123" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
           </li>
