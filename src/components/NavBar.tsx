@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/images/logo.png";
 import "../components/NavBar.css";
 import menuIcon from "../assets/images/menu.png";
 
@@ -10,9 +10,10 @@ function NavBar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <>
-      {location.pathname === "/" && (
+      {window.location.pathname === "/" && (
         <img className="logo" src={logo} alt="le super logo" />
       )}
       <nav className="navbar">
@@ -28,7 +29,7 @@ function NavBar() {
         </div>
         <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/forum" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
           </li>

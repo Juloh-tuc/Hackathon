@@ -5,7 +5,7 @@ footer {
   background-color: var(--secondary-color);
   color: var(--light);
   text-align: center;
-  padding: 20px 0;
+
   font-family: "Georgia", serif;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
