@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Forum />,
       },
       {
-        path: "/contact/:id",
+        path: "/contact",
         element: <Contact />,
       },
       {

@@ -1,14 +1,19 @@
+.body-home{
+  background-image: url(../../assets/images/bckHome.jpeg); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .home {
   margin-top: 60px;
   padding: 20px;
-  background-color: #f4f4f4; /* Couleur de fond douce */
   border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Ombre légère */
   display: flex;
   flex-direction: column;
   align-items: center; /* Centre le contenu horizontalement */
   justify-content: center;
-  text-align: center; /* Centre le texte par défaut */
+  text-align: center;
+   
 }
 
 .home h1 {
@@ -22,7 +27,7 @@
 }
 
 .aboutuscontainer {
-  background-color: #ffffff;
+  
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
