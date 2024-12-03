@@ -1,3 +1,4 @@
+
 /* Global Container */
 .contact-page {
   display: flex;
@@ -5,11 +6,13 @@
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
-  background-image: url(../assets/images/bgcontact.jpg);
+  background-image: url(../../assets/images/bgcontact.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: -1em;
 }
+
 
 /* Form Container */
 .contact-container {

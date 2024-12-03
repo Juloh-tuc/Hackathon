@@ -10,9 +10,10 @@ function NavBar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <>
-      {location.pathname === "/" && (
+      {window.location.pathname === "/" && (
         <img className="logo" src={logo} alt="le super logo" />
       )}
       <nav className="navbar">
@@ -28,8 +29,8 @@ function NavBar() {
         </div>
         <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
-              About
+            <Link to="/forum" onClick={() => setIsMenuOpen(false)}>
+              Forum
             </Link>
           </li>
           <li>
@@ -38,13 +39,8 @@ function NavBar() {
             </Link>
           </li>
           <li>
-            <Link to="/contact/123" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
               Contact
-            </Link>
-          </li>
-          <li>
-            <Link to="/projet" onClick={() => setIsMenuOpen(false)}>
-              Projet
             </Link>
           </li>
         </ul>

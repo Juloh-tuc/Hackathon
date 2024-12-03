@@ -1,0 +1,77 @@
+/* Global Container */
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: url(../../assets/images/bck404.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin-top: -1em;
+}
+
+/* Not Found Container */
+.not-found-container {
+ 
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+}
+
+.not-found-title {
+  font-size: 6rem;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.not-found-message {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* Back Button */
+.back-home-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #7bd3ea;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-home-button:hover {
+  background-color: #5ab6cc;
+  transform: scale(1.05);
+}
+
+.back-home-button:active {
+  background-color: #4aa2b3;
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .not-found-title {
+    font-size: 4rem;
+  }
+
+  .not-found-message {
+    font-size: 1.2rem;
+  }
+
+  .back-home-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

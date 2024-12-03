@@ -1,0 +1,80 @@
+.body-home{
+  background-image: url(../../assets/images/bckHome.jpeg); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home {
+  margin-top: 60px;
+  padding: 20px;
+  border-radius: 10px; /* Coins arrondis */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le contenu horizontalement */
+  justify-content: center;
+  text-align: center;
+   
+}
+
+.home h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+
+.aboutuscontainer {
+  
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  margin: 20px 0; /* Ajoute de l'espace autour du container */
+  max-width: 800px; /* Limite la largeur du container */
+  width: 100%; /* Assure que le container occupe toute la largeur disponible jusqu'à la limite */
+}
+
+.aboutustitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ff6f61;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.home p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .home {
+    padding: 15px;
+  }
+
+  .home h1 {
+    font-size: 2rem;
+  }
+
+  .aboutuscontainer {
+    padding: 15px;
+  }
+
+  .aboutustitle {
+    font-size: 1.6rem;
+  }
+
+  .home p {
+    font-size: 1rem;
+  }
+}
