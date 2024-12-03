@@ -46,7 +46,12 @@ function NavBar() {
             <Link to="/projet" onClick={() => setIsMenuOpen(false)}>
               Projet
             </Link>
-          </li>
+            </li>
+            <li>
+  <Link to="/forum" onClick={() => setIsMenuOpen(false)} className="forum-button">
+    Forum
+  </Link>
+</li>
         </ul>
       </nav>
     </>

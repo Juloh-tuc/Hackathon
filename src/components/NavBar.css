@@ -78,6 +78,20 @@
   height: auto;
 }
 
+.forum-button {
+  background-color: var(--primary-color);
+  color: var(--light);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.forum-button:hover {
+  background-color: var(--secondary-color);
+}
+
 @media (max-width: 768px) {
   .navbar {
     justify-content: flex-end;

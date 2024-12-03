@@ -22,6 +22,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Forum from "./pages/Forum";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,9 @@ const router = createBrowserRouter([
         path: "*",
         element: <NotFound />,
       },
+      {
+         path: "/forum", element: <Forum />
+         },
     ],
   },
 ]);

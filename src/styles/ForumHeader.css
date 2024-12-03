@@ -1,0 +1,27 @@
+.forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-bar {
+    padding: 0.5rem;
+    width: 60%;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+  }
+  
+  .new-topic-button {
+    background-color: var(--primary-color);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .new-topic-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
