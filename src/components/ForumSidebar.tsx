@@ -11,8 +11,8 @@ const popularDiscussions = [
   },
   {
     id: 3,
-    title: "Recherche habits garçons 10 ans",
-    replies: 56,
+    title: "J'ai été victime d'une agression",
+    replies: 3,
     time: "Il y a 1 heure",
   },
 ];

@@ -33,6 +33,7 @@ function ForumHeader({
 
         {/* Bouton "Nouveau sujet" */}
         <button
+          type="button"
           className="new-topic-button"
           onClick={onOpenModal}
           aria-label="Créer un nouveau sujet"
@@ -45,3 +46,5 @@ function ForumHeader({
 }
 
 export default ForumHeader;
+
+
