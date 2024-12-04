@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/ForumList.css";
 
 type Discussion = {
@@ -22,17 +22,23 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
 
   useEffect(() => {
     // Initialisation des likes
-    const updatedLikes = discussions.reduce((acc, discussion) => {
-      acc[discussion.id] = discussion.likes;
-      return acc;
-    }, {} as Record<number, number>);
+    const updatedLikes = discussions.reduce(
+      (acc, discussion) => {
+        acc[discussion.id] = discussion.likes;
+        return acc;
+      },
+      {} as Record<number, number>,
+    );
     setLikeCounts(updatedLikes);
 
     // Initialisation des commentaires
-    const initialComments = discussions.reduce((acc, discussion) => {
-      acc[discussion.id] = discussion.comments || [];
-      return acc;
-    }, {} as Record<number, string[]>);
+    const initialComments = discussions.reduce(
+      (acc, discussion) => {
+        acc[discussion.id] = discussion.comments || [];
+        return acc;
+      },
+      {} as Record<number, string[]>,
+    );
     setAllComments(initialComments);
   }, [discussions]);
 
@@ -62,10 +68,13 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
       [id]: !prev[id], // Inverse l'état actuel (afficher/masquer)
     }));
   };
-   // Gestion de la fermeture des commentaires au clic en dehors
-   useEffect(() => {
+  // Gestion de la fermeture des commentaires au clic en dehors
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (commentRef.current && !commentRef.current.contains(event.target as Node)) {
+      if (
+        commentRef.current &&
+        !commentRef.current.contains(event.target as Node)
+      ) {
         setShowComments({});
       }
     };
@@ -97,14 +106,14 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
 
           {/* Icône pour dérouler les commentaires */}
           <div className="forum-comment-toggle">
-          <button
-            type="button"
-            onClick={() => {
-              if (typeof discussion.id === "number") {
-                toggleComments(discussion.id);
-              }
-            }}
-          >
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof discussion.id === "number") {
+                  toggleComments(discussion.id);
+                }
+              }}
+            >
               🗨️ Voir les commentaires
             </button>
           </div>
@@ -133,7 +142,10 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
                     }))
                   }
                 />
-                <button type="button" onClick={() => handleAddComment(discussion.id)}>
+                <button
+                  type="button"
+                  onClick={() => handleAddComment(discussion.id)}
+                >
                   Répondre
                 </button>
               </div>

@@ -28,12 +28,16 @@ function Forum() {
       replies: 5,
       lastReply: "Il y a 2 heures",
       likes: 10,
-      comments: ["Nous sommes envahis par la violence", "Je suis désolé pour vous"],
+      comments: [
+        "Nous sommes envahis par la violence",
+        "Je suis désolé pour vous",
+      ],
     },
     {
       id: 2,
       title: "menaces",
-      content: "j'ai été victime de menaces par plusieurs individu malintentionnés",
+      content:
+        "j'ai été victime de menaces par plusieurs individu malintentionnés",
       category: "Agression",
       replies: 2,
       lastReply: "Hier",
@@ -48,19 +52,24 @@ function Forum() {
 
   // Fonction pour ajouter une nouvelle discussion
   const addDiscussion = (
-    newDiscussion: Omit<Discussion, "id" | "replies" | "lastReply" | "likes"| "comments">,
+    newDiscussion: Omit<
+      Discussion,
+      "id" | "replies" | "lastReply" | "likes" | "comments"
+    >,
   ) => {
     const newDiscussionWithDefaults: Discussion = {
-        ...newDiscussion,
-        id: discussions.length + 1,
-        replies: 0,
-        lastReply: "À l'instant",
-        likes: 0,
-        comments: [],
-      };
-      setDiscussions((prevDiscussions) => [...prevDiscussions, newDiscussionWithDefaults,
+      ...newDiscussion,
+      id: discussions.length + 1,
+      replies: 0,
+      lastReply: "À l'instant",
+      likes: 0,
+      comments: [],
+    };
+    setDiscussions((prevDiscussions) => [
+      ...prevDiscussions,
+      newDiscussionWithDefaults,
     ]);
-    
+
     closeModal();
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/CreatePostModal.css";
 
 function CreatePostModal({
@@ -48,8 +48,12 @@ function CreatePostModal({
           <option value="Design">Design</option>
         </select>
         <div className="modal-actions">
-          <button onClick={handleSubmit}>Publier</button>
-          <button onClick={onClose}>Annuler</button>
+          <button type="button" onClick={handleSubmit}>
+            Publier
+          </button>
+          <button type="button" onClick={onClose}>
+            Annuler
+          </button>
         </div>
       </div>
     </div>

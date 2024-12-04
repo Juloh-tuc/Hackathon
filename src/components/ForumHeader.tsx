@@ -46,5 +46,3 @@ function ForumHeader({
 }
 
 export default ForumHeader;
-
-

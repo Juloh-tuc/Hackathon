@@ -56,7 +56,7 @@
   border: none;
   cursor: pointer;
   z-index: 1001;
-  top : 3em;
+  top: 3em;
 }
 .burger-menu.home-page {
   top: -9em;
