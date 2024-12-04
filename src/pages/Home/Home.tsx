@@ -8,10 +8,9 @@ interface Quote {
 }
 
 function Home() {
-  const [quotes, setQuotes] = useState<Quote[]>([]); // État pour stocker les citations
-  const [error, setError] = useState<string | null>(null); // État pour gérer les erreurs
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-  // Utilisation de useEffect pour fetcher les données au chargement du composant
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
@@ -20,25 +19,25 @@ function Home() {
           (quote: { q: string; a: string }) => ({
             q: quote.q,
             a: quote.a,
-          }),
+          })
         );
-        setQuotes(quotesData); // Stocke les citations dans l'état
+        setQuotes(quotesData);
       } catch (err) {
         setError("Impossible de récupérer les citations.");
-        console.error(err); // Affiche l'erreur dans la console si le fetch échoue
+        console.error(err);
       }
     };
 
-    fetchQuotes(); // Appel de la fonction pour récupérer les citations
-  }, []); // Le tableau vide assure que l'effet ne se déclenche qu'une fois au montage du composant
+    fetchQuotes();
+  }, []);
 
   return (
     <div className="home">
-      {/* Section de défilement des citations */}
       <div className="quote-marquee">
         {quotes.length > 0 ? (
           <div className="marquee">
-            {quotes.map((quote, index) => (
+            {/* Dupliquer les citations pour l'effet de boucle */}
+            {[...quotes, ...quotes].map((quote, index) => (
               <span key={`${index}-${quote.q}`} className="marquee-item">
                 "{quote.q}" - {quote.a}
               </span>
