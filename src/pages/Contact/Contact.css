@@ -34,6 +34,27 @@
   color: #555;
 }
 
+/* Success Message */
+.success-message {
+  background-color: rgba(123, 211, 234, 0.2);
+  border: 1px solid #7bd3ea;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.success-message h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  font-size: 1rem;
+  color: #555;
+}
+
 /* Form Styles */
 .contact-form {
   display: flex;
