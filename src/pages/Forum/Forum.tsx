@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import "../../styles/Forum.css";
 import CreatePostModal from "../../components/CreatePostModal";
