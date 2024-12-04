@@ -48,12 +48,8 @@ function CreatePostModal({
           <option value="Design">Design</option>
         </select>
         <div className="modal-actions">
-          <button type="button" onClick={handleSubmit}>
-            Publier
-          </button>
-          <button type="button" onClick={onClose}>
-            Annuler
-          </button>
+          <button type="button" onClick={handleSubmit}>Publier</button>
+          <button type="button" onClick={onClose}>Annuler</button>
         </div>
       </div>
     </div>

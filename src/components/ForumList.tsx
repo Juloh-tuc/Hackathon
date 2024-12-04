@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../styles/ForumList.css";
 
 type Discussion = {
@@ -9,38 +9,41 @@ type Discussion = {
   lastReply: string;
   likes: number;
   content: string;
-  comments: string[]; // Ajout de la propriété "comments" pour les discussions
+  comments: string[]; // Propriété pour les commentaires
 };
 
 function ForumList({ discussions }: { discussions: Discussion[] }) {
-  // Initialisation des likes pour chaque discussion
   const [likeCounts, setLikeCounts] = useState<Record<number, number>>({});
   const [commentText, setCommentText] = useState<Record<number, string>>({});
   const [allComments, setAllComments] = useState<Record<number, string[]>>({});
   const [showComments, setShowComments] = useState<Record<number, boolean>>({});
-  const commentRef = useRef<HTMLDivElement | null>(null);
+  const commentRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
+  // Charger les commentaires depuis Local Storage ou initialiser avec les valeurs par défaut
   useEffect(() => {
-    // Initialisation des likes
-    const updatedLikes = discussions.reduce(
-      (acc, discussion) => {
-        acc[discussion.id] = discussion.likes;
-        return acc;
-      },
-      {} as Record<number, number>,
-    );
-    setLikeCounts(updatedLikes);
-
-    // Initialisation des commentaires
-    const initialComments = discussions.reduce(
-      (acc, discussion) => {
+    const savedComments = localStorage.getItem("forumComments");
+    if (savedComments) {
+      setAllComments(JSON.parse(savedComments));
+    } else {
+      const initialComments = discussions.reduce((acc, discussion) => {
         acc[discussion.id] = discussion.comments || [];
         return acc;
-      },
-      {} as Record<number, string[]>,
-    );
-    setAllComments(initialComments);
+      }, {} as Record<number, string[]>);
+      setAllComments(initialComments);
+    }
+
+    // Initialisation des likes
+    const initialLikes = discussions.reduce((acc, discussion) => {
+      acc[discussion.id] = discussion.likes;
+      return acc;
+    }, {} as Record<number, number>);
+    setLikeCounts(initialLikes);
   }, [discussions]);
+
+  // Sauvegarder les commentaires dans Local Storage à chaque mise à jour
+  useEffect(() => {
+    localStorage.setItem("forumComments", JSON.stringify(allComments));
+  }, [allComments]);
 
   // Gestion des likes
   const handleLike = (id: number) => {
@@ -65,17 +68,20 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
   const toggleComments = (id: number) => {
     setShowComments((prev) => ({
       ...prev,
-      [id]: !prev[id], // Inverse l'état actuel (afficher/masquer)
+      [id]: !prev[id], // Inverse l'état actuel
     }));
   };
-  // Gestion de la fermeture des commentaires au clic en dehors
+
+  // Gestion de la fermeture des commentaires lorsqu'on clique en dehors
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        commentRef.current &&
-        !commentRef.current.contains(event.target as Node)
-      ) {
+      if (event.target instanceof Node) {
+      const isClickInside = Object.values(commentRefs.current).some(
+        (ref) => ref?.contains(event.target as Node)
+      );
+      if (!isClickInside) {
         setShowComments({});
+      }
       }
     };
 
@@ -106,28 +112,24 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
 
           {/* Icône pour dérouler les commentaires */}
           <div className="forum-comment-toggle">
-            <button
-              type="button"
-              onClick={() => {
-                if (typeof discussion.id === "number") {
-                  toggleComments(discussion.id);
-                }
-              }}
-            >
-              🗨️ Voir les commentaires
+            <button type="button" onClick={() => toggleComments(discussion.id)}>
+              🗨️ {showComments[discussion.id] ? "Masquer" : "Voir"} les commentaires
             </button>
           </div>
 
           {/* Liste des commentaires (affichés si showComments est vrai) */}
           {showComments[discussion.id] && (
-            <>
-              <div className="forum-comments">
-                {allComments[discussion.id]?.map((comment) => (
-                  <div key={comment} className="forum-comment">
-                    <p>🗨️ {comment}</p>
-                  </div>
-                ))}
-              </div>
+            <div
+              ref={(el) => {
+                commentRefs.current[discussion.id] = el;
+              }}
+              className="forum-comments"
+            >
+              {allComments[discussion.id]?.map((comment, index) => (
+                <div key={`${discussion.id}-${index}`} className="forum-comment">
+                  <p>🗨️ {comment}</p>
+                </div>
+              ))}
 
               {/* Ajout d'un commentaire */}
               <div className="forum-comment-input">
@@ -149,7 +151,7 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
                   Répondre
                 </button>
               </div>
-            </>
+            </div>
           )}
 
           {/* Bouton pour liker */}
