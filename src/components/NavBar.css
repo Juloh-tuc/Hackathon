@@ -38,6 +38,13 @@
   text-align: center;
   margin: 15px 0;
 }
+.navbar-links ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:right;
+
+}
 
 .navbar-links a {
   color: black;
