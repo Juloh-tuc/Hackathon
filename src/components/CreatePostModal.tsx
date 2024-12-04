@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/CreatePostModal.css";
 
 function CreatePostModal({
@@ -18,13 +18,30 @@ function CreatePostModal({
 
   const handleSubmit = () => {
     if (title.trim() && content.trim()) {
-      onAdd({ title, content, category }); // Transmet les données au parent
-      onClose(); // Ferme la modale
+      const newDiscussion = {
+        title,
+        content,
+        category,
+        id: Date.now(),
+        replies: 0,
+        lastReply: "",
+        likes: 0,
+        comments: [],
+      };
+
+      const savedDiscussions = localStorage.getItem("forumDiscussions");
+      const discussions = savedDiscussions ? JSON.parse(savedDiscussions) : [];
+      discussions.push(newDiscussion);
+
+      localStorage.setItem("forumDiscussions", JSON.stringify(discussions));
+
+      onAdd(newDiscussion);
+
+      onClose();
     } else {
       alert("Veuillez remplir tous les champs.");
     }
-  };
-
+   };
   return (
     <div className="modal-backdrop">
       <div className="modal-content">
@@ -43,13 +60,19 @@ function CreatePostModal({
           required
         />
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="Général">Général</option>
-          <option value="Technique">Technique</option>
-          <option value="Design">Design</option>
+          <option value="Mes émotions">Mes émotions </option>
+          <option value="Violence">Violence</option>
+          <option value="Harcèlement">Harcèlement </option>
+          <option value="Mes pensées"> Mes pensées </option>
+          <option value="Appel"> Un appel à l'aide </option>
         </select>
         <div className="modal-actions">
-          <button onClick={handleSubmit}>Publier</button>
-          <button onClick={onClose}>Annuler</button>
+          <button type="button" onClick={handleSubmit}>
+            Publier
+          </button>
+          <button type="button" onClick={onClose}>
+            Annuler
+          </button>
         </div>
       </div>
     </div>
