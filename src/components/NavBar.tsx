@@ -1,25 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import menuIcon from "../assets/images/menu.png";
 import "../components/NavBar.css";
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const isHomePage = location.pathname === "/"; // Détecter si c'est la page d'accueil
+
   return (
     <>
-      {window.location.pathname === "/" && (
-        <img className="logo" src={logo} alt="le super logo" />
-      )}
+      {isHomePage && <img className="logo" src={logo} alt="le super logo" />}
       <nav className="navbar">
         <div className="navbar-header">
           <button
-            className="burger-menu"
+            className={`burger-menu ${isHomePage ? "home-page" : ""}`}
             type="button"
             onClick={toggleMenu}
             aria-label="Toggle menu"

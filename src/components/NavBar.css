@@ -51,12 +51,15 @@
 .burger-menu {
   display: block;
   position: absolute;
-  top: -9em;
   right: 50px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1001;
+  top : 3em;
+}
+.burger-menu.home-page {
+  top: -9em;
 }
 
 .menu-icon {
