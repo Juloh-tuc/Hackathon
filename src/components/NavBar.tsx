@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
-import "../components/NavBar.css";
 import menuIcon from "../assets/images/menu.png";
+import "../components/NavBar.css";
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

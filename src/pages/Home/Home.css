@@ -101,7 +101,6 @@
     position: relative;
     width: 100%;
     margin-bottom: 6rem;
-   
   }
 
   .marquee-item {
@@ -111,7 +110,6 @@
 
 /* Écrans moyens (moins de 768px) */
 @media (max-width: 768px) {
-
   .marquee-item {
     font-size: 1rem;
     margin-right: 20px;
@@ -120,7 +118,6 @@
 
 /* Très petits écrans (moins de 480px) */
 @media (max-width: 480px) {
-
   .marquee-item {
     font-size: 0.9rem;
     margin-right: 10px;
@@ -129,5 +126,5 @@
     display: flex;
     animation: marquee 5s linear infinite;
     white-space: nowrap;
-}
+  }
 }

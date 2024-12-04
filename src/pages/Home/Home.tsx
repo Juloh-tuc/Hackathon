@@ -19,7 +19,7 @@ function Home() {
           (quote: { q: string; a: string }) => ({
             q: quote.q,
             a: quote.a,
-          })
+          }),
         );
         setQuotes(quotesData);
       } catch (err) {

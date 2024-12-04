@@ -7,97 +7,79 @@
 .navbar {
   justify-content: space-between;
   padding: 0.5rem 1rem;
-
+  position: relative;
 }
 
 .navbar-links {
-  display: none; /* Par défaut caché */
+  display: flex;
+  flex-direction: column;
   list-style: none;
   gap: 1.5rem;
-  margin: 0;
-  flex-direction: column; /* Sur les grands écrans, le menu sera aussi vertical */
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  transform: translateY(-200%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1000000000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 10%;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  text-align: right;
+  padding: 2rem 1rem;
 }
 
 .navbar-links.open {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align:right;
-  transform: translateY(0);
-  margin-top: -3em;
+  right: 0;
 }
 
 .navbar-links li {
-  text-align: center;
   margin: 15px 0;
-}
-.navbar-links ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align:right;
-
 }
 
 .navbar-links a {
   color: black;
   text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  display: block;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-  margin: 0;
-  gap: 0;
-}
-
-.navbar-links a::after {
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: -5px;
-  transition: width 0.4s ease;
+  justify-content: flex-start;
 }
 
 .navbar-links a:hover {
   color: green;
 }
 
-.navbar-links a:hover::after {
-  width: 100%;
+.burger-menu {
+  display: block;
+  position: absolute;
+  top: -9em;
+  right: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-icon {
+  position: fixed;
+  margin-right: 10px;
+  width: 35px;
+  height: auto;
 }
 
 .logo {
   position: static;
   margin-left: auto;
-  max-width: 7.5rem; /* 120px converted to relative unit */
+  max-width: 7.5rem;
   width: 100%;
   border-radius: 20%;
-  box-shadow: -0.3125rem 0.9375rem 2rem 0 rgba(238, 174, 202, 0.75); /* Converted to relative units */
-  z-index: 100000000;
+  box-shadow: -0.3125rem 0.9375rem 2rem 0 rgba(238, 174, 202, 0.75);
+  z-index: 1000;
   margin-left: 2%;
   margin-top: 2%;
 }
-
-.burger-menu {
-  display: block; /* Le bouton burger sera toujours affiché */
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 100000000;
-}
-
-.menu-icon {
-  width: 35px;
-  height: auto;
+@media (max-width: 768px) {
+  .navbar-links {
+    width: 20%;
+    padding: 2rem 1rem;
+  }
 }

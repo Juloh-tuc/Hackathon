@@ -6,9 +6,9 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); 
-    setIsSubmitted(true); 
-    setTimeout(() => setIsSubmitted(false), 10000); 
+    e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 10000);
   };
 
   return (
@@ -16,21 +16,27 @@ const Contact = () => {
       <div className="contact-container">
         <h1 className="contact-title">Nous contacter</h1>
         <p className="contact-description">
-          Si tu as besoin d’aide ou souhaites nous poser des questions, n’hésite pas à nous écrire.
-          Nous sommes là pour t'aider.
+          Si tu as besoin d’aide ou souhaites nous poser des questions, n’hésite
+          pas à nous écrire. Nous sommes là pour t'aider.
         </p>
         {isSubmitted ? (
           <div className="success-message">
             <h2>Message envoyé !</h2>
             <p>
-              Merci de nous avoir contactés. Nous reviendrons vers toi rapidement. Rappelle-toi, tu n’es jamais seul·e.
+              Merci de nous avoir contactés. Nous reviendrons vers toi
+              rapidement. Rappelle-toi, tu n’es jamais seul·e.
             </p>
           </div>
         ) : (
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Nom</label>
-              <input type="text" id="name" placeholder="Ton nom ou pseudo" required />
+              <input
+                type="text"
+                id="name"
+                placeholder="Ton nom ou pseudo"
+                required
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -38,7 +44,12 @@ const Contact = () => {
             </div>
             <div className="form-group">
               <label htmlFor="message">Raconte-nous tout</label>
-              <textarea id="message" placeholder="Ton message" rows={4} required />
+              <textarea
+                id="message"
+                placeholder="Ton message"
+                rows={4}
+                required
+              />
             </div>
             <button type="submit" className="form-button">
               Envoyer
