@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../styles/ForumList.css";
 
 type Discussion = {
@@ -77,7 +77,7 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
     const handleClickOutside = (event: MouseEvent) => {
       if (event.target instanceof Node) {
       const isClickInside = Object.values(commentRefs.current).some(
-        (ref) => ref && ref.contains(event.target)
+        (ref) => ref?.contains(event.target as Node)
       );
       if (!isClickInside) {
         setShowComments({});
@@ -120,11 +120,13 @@ function ForumList({ discussions }: { discussions: Discussion[] }) {
           {/* Liste des commentaires (affichés si showComments est vrai) */}
           {showComments[discussion.id] && (
             <div
-              ref={(el) => (commentRefs.current[discussion.id] = el)}
+              ref={(el) => {
+                commentRefs.current[discussion.id] = el;
+              }}
               className="forum-comments"
             >
               {allComments[discussion.id]?.map((comment, index) => (
-                <div key={index} className="forum-comment">
+                <div key={`${discussion.id}-${index}`} className="forum-comment">
                   <p>🗨️ {comment}</p>
                 </div>
               ))}
