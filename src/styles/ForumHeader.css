@@ -1,26 +1,38 @@
 .forum-header {
+  background: #f6d6d6;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .search-bar {
   padding: 0.5rem;
-  width: 60%;
+  width: 70%;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
+  margin-top: 1rem;
 }
 
 .new-topic-button {
-  background-color: var(--primary-color);
+  background: #ff6f61;
   color: var(--light);
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .new-topic-button:hover {
   background-color: var(--secondary-color);
+}
+
+.forum-header h1 {
+  font-size: 2rem;
+  color: #333;
 }

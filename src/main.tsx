@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Contact from "./pages/Contact/Contact";
-import Forum from "./pages/Forum";
+import Forum from "./pages/Forum/Forum";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 

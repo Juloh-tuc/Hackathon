@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Forum.css";
+import "../../styles/Forum.css";
 import CreatePostModal from "../../components/CreatePostModal";
 import ForumHeader from "../../components/ForumHeader";
 import ForumList from "../../components/ForumList";
@@ -13,6 +13,7 @@ type Discussion = {
   replies: number;
   lastReply: string;
   likes: number;
+  comments: string[];
 };
 
 function Forum() {
@@ -21,21 +22,23 @@ function Forum() {
   const [discussions, setDiscussions] = useState<Discussion[]>([
     {
       id: 1,
-      title: "Comment améliorer le projet React ?",
-      content: "Partagez vos idées pour améliorer ce projet.",
-      category: "Technique",
+      title: "J'ai été victime d'une agression",
+      content: "Lors d'une balade j'ai été aborder d'une façon brutale",
+      category: "agression",
       replies: 5,
       lastReply: "Il y a 2 heures",
       likes: 10,
+      comments: ["Nous sommes envahis par la violence", "Je suis désolé pour vous"],
     },
     {
       id: 2,
-      title: "Idées pour l'interface utilisateur",
-      content: "Des suggestions pour un design moderne ?",
-      category: "Design",
+      title: "menaces",
+      content: "j'ai été victime de menaces par plusieurs individu malintentionnés",
+      category: "Agression",
       replies: 2,
       lastReply: "Hier",
       likes: 8,
+      comments: ["bon courage", "je suis de tout coeur avec vous"],
     },
   ]);
 
@@ -45,18 +48,19 @@ function Forum() {
 
   // Fonction pour ajouter une nouvelle discussion
   const addDiscussion = (
-    newDiscussion: Omit<Discussion, "id" | "replies" | "lastReply" | "likes">,
+    newDiscussion: Omit<Discussion, "id" | "replies" | "lastReply" | "likes"| "comments">,
   ) => {
-    setDiscussions((prevDiscussions) => [
-      ...prevDiscussions,
-      {
+    const newDiscussionWithDefaults: Discussion = {
         ...newDiscussion,
-        id: prevDiscussions.length + 1,
+        id: discussions.length + 1,
         replies: 0,
         lastReply: "À l'instant",
         likes: 0,
-      },
+        comments: [],
+      };
+      setDiscussions((prevDiscussions) => [...prevDiscussions, newDiscussionWithDefaults,
     ]);
+    
     closeModal();
   };
 
